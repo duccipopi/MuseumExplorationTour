@@ -1,7 +1,8 @@
-package br.duccipopi.met
+package br.duccipopi.met.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.duccipopi.met.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

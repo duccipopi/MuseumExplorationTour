@@ -6,7 +6,9 @@ import br.duccipopi.met.model.remote.MetMuseumApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class Repository(private val dao: MetMuseumDao, private val service: MetMuseumApi) {
+interface IRepository
+
+class Repository(private val dao: MetMuseumDao, private val service: MetMuseumApi) : IRepository {
 
     suspend fun refreshDepartments() {
         withContext(Dispatchers.IO) {
