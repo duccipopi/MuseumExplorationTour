@@ -31,6 +31,9 @@ interface MetMuseumDao {
     @Query("SELECT * from ARTWORK_TABLE")
     fun getArtworks(): LiveData<List<Artwork>>
 
+    @Query("SELECT * from ARTWORK_TABLE WHERE departmentId = :id")
+    fun getArtworksFromDepartment(id: Int): LiveData<List<Artwork>>
+
     @Query("DELETE from ARTWORK_TABLE")
     suspend fun clearArtworks()
 
