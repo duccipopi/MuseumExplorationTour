@@ -1,5 +1,7 @@
 package br.duccipopi.met.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 
 data class SearchResult(
@@ -11,13 +13,15 @@ data class DepartmentResult(
     val departments: List<Department>
 )
 
+@Entity(tableName = "department_table")
 data class Department(
-    @Json(name = "departmentId") val id: Int,
+    @PrimaryKey @Json(name = "departmentId") val id: Int,
     @Json(name = "displayName") val name: String
 )
 
+@Entity(tableName = "artwork_table")
 data class Artwork(
-    @Json(name = "objectID") val id: Int,
+    @PrimaryKey @Json(name = "objectID") val id: Int,
     val isHighlight: Boolean,
     val accessionYear: String,
     val isPublicDomain: Boolean,
