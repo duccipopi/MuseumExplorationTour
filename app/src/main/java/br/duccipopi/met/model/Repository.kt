@@ -6,11 +6,17 @@ import br.duccipopi.met.model.remote.MetMuseumApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-interface IRepository
+interface IRepository {
+    suspend fun refreshDepartments()
+    suspend fun getDepartments(): LiveData<List<Department>>
+    suspend fun refreshArtworks(departmentId: Int)
+    suspend fun getArtworkForDepartment(departmentId: Int): LiveData<List<Artwork>>
+    suspend fun getArtwork(id: Int): LiveData<Artwork>
+}
 
 class Repository(private val dao: MetMuseumDao, private val service: MetMuseumApi) : IRepository {
 
-    suspend fun refreshDepartments() {
+    override suspend fun refreshDepartments() {
         withContext(Dispatchers.IO) {
             val departmentResult = service.getDepartments()
 
@@ -20,13 +26,13 @@ class Repository(private val dao: MetMuseumDao, private val service: MetMuseumAp
         }
     }
 
-    suspend fun getDepartments(): LiveData<List<Department>> {
+    override suspend fun getDepartments(): LiveData<List<Department>> {
         return withContext(Dispatchers.IO) {
             dao.getDepartments()
         }
     }
 
-    suspend fun refreshArtworks(departmentId: Int) {
+    override suspend fun refreshArtworks(departmentId: Int) {
         withContext(Dispatchers.IO) {
             val result = service.getArtworksIds(departmentId)
 
@@ -38,13 +44,13 @@ class Repository(private val dao: MetMuseumDao, private val service: MetMuseumAp
         }
     }
 
-    suspend fun getArtworkForDepartment(departmentId: Int): LiveData<List<Artwork>> {
+    override suspend fun getArtworkForDepartment(departmentId: Int): LiveData<List<Artwork>> {
         return withContext(Dispatchers.IO) {
             dao.getArtworksFromDepartment(departmentId)
         }
     }
 
-    suspend fun getArtwork(id: Int): LiveData<Artwork> {
+    override suspend fun getArtwork(id: Int): LiveData<Artwork> {
         return withContext(Dispatchers.IO) {
             dao.getArtwork(id)
         }

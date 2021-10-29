@@ -11,7 +11,7 @@ import br.duccipopi.met.model.Department
 @Dao
 interface MetMuseumDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(department: Department)
+    fun insert(department: Department)
 
     @Query("SELECT * from DEPARTMENT_TABLE WHERE id = :id")
     fun getDepartment(id: Int): LiveData<Department>
@@ -20,10 +20,10 @@ interface MetMuseumDao {
     fun getDepartments(): LiveData<List<Department>>
 
     @Query("DELETE from DEPARTMENT_TABLE")
-    suspend fun clearDepartments()
+    fun clearDepartments()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(artwork: Artwork)
+    fun insert(artwork: Artwork)
 
     @Query("SELECT * from ARTWORK_TABLE WHERE id = :id")
     fun getArtwork(id: Int): LiveData<Artwork>
@@ -35,6 +35,6 @@ interface MetMuseumDao {
     fun getArtworksFromDepartment(id: Int): LiveData<List<Artwork>>
 
     @Query("DELETE from ARTWORK_TABLE")
-    suspend fun clearArtworks()
+    fun clearArtworks()
 
 }
