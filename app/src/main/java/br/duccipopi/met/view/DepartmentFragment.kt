@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.duccipopi.met.R
 import br.duccipopi.met.databinding.DepartmentFragmentBinding
-import br.duccipopi.met.viewmodel.DepartmentAdapter
+import br.duccipopi.met.util.adapter.GenericAdapter
 import br.duccipopi.met.viewmodel.DepartmentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,8 +31,8 @@ class DepartmentFragment : Fragment() {
 
         viewModel.loading.observe(viewLifecycleOwner, { loading ->
             if (!loading) {
-                binding.departmentList.adapter = DepartmentAdapter(viewLifecycleOwner, viewModel.departments, {
-                    findNavController().navigate(DepartmentFragmentDirections.actionDepartmentFragmentToGalleryFragment(it))
+                binding.departmentList.adapter = GenericAdapter(viewLifecycleOwner, viewModel.departments, {
+                    findNavController().navigate(DepartmentFragmentDirections.actionDepartmentFragmentToGalleryFragment(it.id))
                 })
                 binding.departmentList.layoutManager = LinearLayoutManager(requireContext())
             }
