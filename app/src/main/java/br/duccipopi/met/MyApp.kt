@@ -7,7 +7,9 @@ import br.duccipopi.met.model.data.MetMuseumDao
 import br.duccipopi.met.model.data.MetMuseumDatabase
 import br.duccipopi.met.model.remote.MetMuseumApi
 import br.duccipopi.met.model.remote.metMuseumService
+import br.duccipopi.met.viewmodel.DepartmentViewModel
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -17,7 +19,9 @@ class MyApp : Application() {
 
         val module = module {
 
-            //viewModel {  }
+            viewModel {
+                DepartmentViewModel(get(), get())
+            }
             single { metMuseumService as MetMuseumApi }
             single { MetMuseumDatabase.getInstance(this@MyApp).metMuseumDao as MetMuseumDao }
             single { Repository(get(), get()) as IRepository }
@@ -25,7 +29,7 @@ class MyApp : Application() {
 
         startKoin {
             androidContext(this@MyApp)
-            modules(module)
+            modules(listOf(module))
         }
 
     }
