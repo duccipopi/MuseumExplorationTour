@@ -1,8 +1,10 @@
 package br.duccipopi.met.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
 
 data class SearchResult(
     val total: Int,
@@ -20,6 +22,7 @@ data class Department(
 )
 
 @Entity(tableName = "artwork_table")
+@Parcelize
 data class Artwork(
     @PrimaryKey @Json(name = "objectID") val id: Int,
     val isHighlight: Boolean,
@@ -43,4 +46,4 @@ data class Artwork(
     @Json(name = "objectURL") val link: String,
     @Json(name = "objectWikidata_URL") val wikiLink: String
 
-)
+) : Parcelable

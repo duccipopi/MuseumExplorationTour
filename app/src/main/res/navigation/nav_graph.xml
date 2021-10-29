@@ -28,7 +28,7 @@
         android:name="br.duccipopi.met.view.ArtworkFragment"
         android:label="ArtworkFragment" >
         <argument
-            android:name="artworkId"
-            app:argType="integer" />
+            android:name="artwork"
+            app:argType="br.duccipopi.met.model.Artwork"/>
     </fragment>
 </navigation>

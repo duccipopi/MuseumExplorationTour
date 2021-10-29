@@ -7,6 +7,7 @@ import br.duccipopi.met.model.data.MetMuseumDao
 import br.duccipopi.met.model.data.MetMuseumDatabase
 import br.duccipopi.met.model.remote.MetMuseumApi
 import br.duccipopi.met.model.remote.metMuseumService
+import br.duccipopi.met.viewmodel.ArtworkViewModel
 import br.duccipopi.met.viewmodel.DepartmentViewModel
 import br.duccipopi.met.viewmodel.GalleryViewModel
 import org.koin.android.ext.koin.androidContext
@@ -25,6 +26,9 @@ class MyApp : Application() {
             }
             viewModel {
                 GalleryViewModel(get(), get())
+            }
+            viewModel {
+                ArtworkViewModel(get(), get())
             }
             single { metMuseumService as MetMuseumApi }
             single { MetMuseumDatabase.getInstance(this@MyApp).metMuseumDao as MetMuseumDao }

@@ -1,7 +1,9 @@
 package br.duccipopi.met.viewmodel
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import br.duccipopi.met.model.IRepository
 
-class ArtworkViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class ArtworkViewModel(val app: Application, val repository: IRepository) : AndroidViewModel(app) {
+
 }
