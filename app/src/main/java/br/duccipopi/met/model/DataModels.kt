@@ -28,7 +28,7 @@ data class Artwork(
     @Json(name = "primaryImage") val image: String,
     @Json(name = "primaryImageSmall") val smallImage: String,
     val department: String,
-    var departmentId: Int,
+    var departmentId: Int?,
     @Json(name = "objectName") val type: String,
     val title: String,
     val culture: String,

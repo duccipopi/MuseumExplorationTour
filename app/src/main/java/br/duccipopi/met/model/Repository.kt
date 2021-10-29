@@ -10,6 +10,7 @@ interface IRepository {
     suspend fun refreshDepartments()
     suspend fun getDepartments(): LiveData<List<Department>>
     suspend fun refreshArtworks(departmentId: Int)
+    suspend fun refreshArtworks(departmentId: Int, count: Int)
     suspend fun getArtworkForDepartment(departmentId: Int): LiveData<List<Artwork>>
     suspend fun getArtwork(id: Int): LiveData<Artwork>
 }
@@ -40,6 +41,21 @@ class Repository(private val dao: MetMuseumDao, private val service: MetMuseumAp
                 val artwork = service.getArtwork(id)
                 artwork.departmentId = departmentId
                 dao.insert(artwork)
+            }
+        }
+    }
+
+    override suspend fun refreshArtworks(departmentId: Int, count: Int) {
+        withContext(Dispatchers.IO) {
+            val result = service.getArtworksIds(departmentId)
+
+            result.ids?.let { list ->
+                list.shuffled().subList(0, count)
+                    .forEach { id ->
+                        val artwork = service.getArtwork(id)
+                        artwork.departmentId = departmentId
+                        dao.insert(artwork)
+                    }
             }
         }
     }
