@@ -27,8 +27,6 @@ class DepartmentFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        viewModel.loadDepartments()
-
         viewModel.loading.observe(viewLifecycleOwner, { loading ->
             if (!loading) {
                 binding.departmentList.adapter =

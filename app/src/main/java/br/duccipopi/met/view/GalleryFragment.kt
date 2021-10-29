@@ -17,6 +17,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GalleryFragment : Fragment() {
 
+    companion object {
+        const val DEPARTMENT_ID = "departmentId"
+    }
+
     private lateinit var binding: GalleryFragmentBinding
     private val viewModel: GalleryViewModel by viewModel()
 
@@ -30,7 +34,6 @@ class GalleryFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val departmentId = args.departmentId
-
         viewModel.loadArtworksForDepartment(departmentId)
 
         viewModel.loading.observe(viewLifecycleOwner, { loading ->

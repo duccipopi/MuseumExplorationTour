@@ -12,6 +12,10 @@ class GalleryViewModel(val app: Application, val repository: IRepository) : Andr
     val loading: LiveData<Boolean>
         get() = _loading
 
+    private val _currentDepartment = MutableLiveData(-1)
+    val currentDepartment: LiveData<Int>
+        get() = _currentDepartment
+
     lateinit var artworks: LiveData<List<Artwork>>
 
     fun loadArtworksForDepartment(id: Int) {
@@ -20,7 +24,11 @@ class GalleryViewModel(val app: Application, val repository: IRepository) : Andr
             if (!this@GalleryViewModel::artworks.isInitialized) {
               artworks = repository.getArtworkForDepartment(id)
             }
-            repository.refreshArtworks(id, 6)
+
+            if (_currentDepartment.value != id) {
+                repository.refreshArtworks(id, 6)
+                _currentDepartment.value = id
+            }
             _loading.value = false
         }
     }

@@ -20,6 +20,7 @@ class DepartmentViewModel(val app: Application, val repository: IRepository) :
     lateinit var departments: LiveData<List<Department>>
 
     init {
+        loadDepartments()
         viewModelScope.launch {
             departments = repository.getDepartments()
             _loading.value = false
