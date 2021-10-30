@@ -11,6 +11,8 @@
     <color name="primaryColor">#d6cbc7</color>
     <color name="primaryLightColor">#e7edfa</color>
     <color name="primaryDarkColor">#a59a96</color>
+<!--    <color name="primaryDarkerColor">#615652</color>-->
+    <color name="primaryDarkerColor">#a59a96</color>
     <color name="secondaryColor">#e53935</color>
     <color name="secondaryLightColor">#ff6f60</color>
     <color name="secondaryDarkColor">#ab000d</color>
