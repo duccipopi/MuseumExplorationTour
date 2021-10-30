@@ -2,23 +2,27 @@ package br.duccipopi.met.util.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
+import br.duccipopi.met.BR
 
 class GenericAdapter<T>(
     private val lifecycleOwner: LifecycleOwner,
     private val list: LiveData<List<T>>,
-    private val callback: (T) -> Unit? = { }
+    private val layout: Int,
+    private val callback: (T) -> Unit = { }
 ) :
     RecyclerView.Adapter<GenericViewHolder<T>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenericViewHolder<T> {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(android.R.layout.simple_list_item_1, parent, false) as TextView
+        val inflater = LayoutInflater.from(parent.context)
 
-        return GenericViewHolder(view)
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, layout, parent, false)
+
+        return GenericViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: GenericViewHolder<T>, position: Int) {
@@ -34,16 +38,18 @@ class GenericAdapter<T>(
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
 
-        list.observe (lifecycleOwner, {
+        list.observe(lifecycleOwner, {
             notifyDataSetChanged()
         })
     }
 }
 
-class GenericViewHolder<T>(private val view: TextView) : RecyclerView.ViewHolder(view) {
+class GenericViewHolder<T>(private val binding: ViewDataBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: T, callback: (T) -> Unit?) {
-        view.text = item.toString()
-        view.setOnClickListener { callback(item) }
+    fun bind(item: T, callback: (T) -> Unit) {
+        binding.setVariable(BR.data, item)
+        binding.setVariable(BR.onClick, callback)
+        binding.executePendingBindings()
     }
 }

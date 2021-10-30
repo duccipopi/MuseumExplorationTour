@@ -30,10 +30,14 @@ class DepartmentFragment : Fragment() {
         viewModel.loading.observe(viewLifecycleOwner, { loading ->
             if (!loading) {
                 binding.departmentList.adapter =
-                    GenericAdapter(viewLifecycleOwner, viewModel.departments, {
-                        findNavController().navigate(
-                            DepartmentFragmentDirections.actionDepartmentFragmentToGalleryFragment(it.id))
-                })
+                    GenericAdapter(viewLifecycleOwner,
+                        viewModel.departments,
+                        R.layout.department_list_item,
+                        {
+                            findNavController().navigate(
+                                DepartmentFragmentDirections.actionDepartmentFragmentToGalleryFragment(it.id))
+                        }
+                    )
                 binding.departmentList.layoutManager = LinearLayoutManager(requireContext())
             }
         })

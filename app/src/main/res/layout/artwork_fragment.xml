@@ -2,8 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    
+
     <data>
+
         <variable
             name="artwork"
             type="br.duccipopi.met.model.Artwork" />
@@ -12,33 +13,97 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.ArtworkFragment"
-        android:layout_margin="12dp">
+        android:layout_margin="@dimen/canvas_margin"
+        tools:context=".view.ArtworkFragment">
 
-        <TextView
+        <LinearLayout
             android:id="@+id/artwork_info"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="@{artwork.toString()}"
+            android:layout_height="wrap_content"
+            android:background="@drawable/canvas_background"
+            android:orientation="vertical"
+            android:padding="@dimen/canvas_inter_padding"
             android:visibility="invisible"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/artwork_title"
+                style="@style/artwork_tile_title"
+                android:paddingTop="@dimen/canvas_inter_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:noEmptyText="@{artwork.title}"
+                tools:text="Title" />
+            <TextView
+                android:id="@+id/artwork_artist"
+                android:paddingTop="@dimen/canvas_inter_padding"
+                style="@style/artwork_tile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:noEmptyText="@{artwork.artist}"
+                tools:text="Artist" />
+            <TextView
+                android:id="@+id/artwork_type"
+                android:paddingTop="@dimen/canvas_inter_padding"
+                style="@style/artwork_tile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:noEmptyText="@{artwork.type}"
+                tools:text="Type" />
+            <TextView
+                android:id="@+id/artwork_date_period_country"
+                android:paddingTop="@dimen/canvas_inter_padding"
+                style="@style/artwork_tile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:noEmptyText="@{String.join(`, `, artwork.date, artwork.period) + artwork.country}"
+                tools:text="Date, Period, Country" />
+            <TextView
+                android:id="@+id/artwork_accession_year"
+                android:paddingTop="@dimen/canvas_inter_padding"
+                style="@style/artwork_tile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:noEmptyText="@{@string/accessionYear(artwork.accessionYear)}"
+                tools:text="Accession Year" />
+            <TextView
+                android:id="@+id/artwork_dimensions"
+                style="@style/artwork_tile"
+                android:paddingTop="@dimen/canvas_inter_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:noEmptyText="@{artwork.dimensions}"
+                tools:text="Dimensions" />
+            <TextView
+                android:id="@+id/artwork_link"
+                style="@style/artwork_tile"
+                android:paddingTop="@dimen/canvas_inter_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:noEmptyText="@{artwork.link}"
+                android:autoLink="web"
+                tools:text="link" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/artwork_image"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:scaleType="centerInside"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@drawable/canvas_background"
+            android:contentDescription="@{artwork.type}"
+            android:padding="@dimen/canvas_inter_padding"
+            android:scaleType="fitCenter"
             android:src="@android:drawable/gallery_thumb"
-            app:imageUrl="@{artwork.image}"
             android:visibility="visible"
+            app:imageUrl="@{artwork.image}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/backgrounds/scenic" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

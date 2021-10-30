@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Museum Exploration Tour</string>
+    <string name="unknown">Unknown</string>
+    <string name="accessionYear">Accession Year: %s</string>
 </resources>

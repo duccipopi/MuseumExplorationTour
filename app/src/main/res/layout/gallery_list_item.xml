@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="br.duccipopi.met.model.Artwork" />
+
+        <variable
+            name="onClick"
+            type="kotlin.jvm.functions.Function1" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/canvas_background"
+        android:elevation="@dimen/canvas_elevation"
+        android:layout_margin="@dimen/canvas_margin"
+        android:onClick="@{_ -> onClick.invoke(data)}"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/artwork_thumbnail"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/thumbnail_height"
+            android:layout_margin="@dimen/canvas_margin"
+            android:adjustViewBounds="true"
+            android:contentDescription="@{data.type}"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{data.smallImage}"
+            app:layout_constraintBottom_toTopOf="@id/artwork_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/artwork_title"
+            style="@style/gallery_tile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/canvas_inter_padding"
+            android:text="@{data.title}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/artwork_thumbnail"
+            tools:text="Gotas de orvalho no carvalho" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

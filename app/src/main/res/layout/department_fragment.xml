@@ -6,7 +6,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.DepartmentFragment">
+        tools:context=".view.DepartmentFragment"
+        android:layout_margin="@dimen/departments_margin">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/department_list"

@@ -39,11 +39,14 @@ class GalleryFragment : Fragment() {
         viewModel.loading.observe(viewLifecycleOwner, { loading ->
             if (!loading) {
                 binding.galleryList.adapter =
-                    GenericAdapter(viewLifecycleOwner, viewModel.artworks, {
-                        findNavController().navigate(
-                            GalleryFragmentDirections.actionGalleryFragmentToArtworkFragment(it)
-                        )
-                    })
+                    GenericAdapter(viewLifecycleOwner,
+                        viewModel.artworks,
+                        R.layout.gallery_list_item,
+                        {
+                            findNavController().navigate(
+                                GalleryFragmentDirections.actionGalleryFragmentToArtworkFragment(it))
+                        }
+                    )
                 binding.galleryList.layoutManager = GridLayoutManager(requireContext(), 2)
             }
         })
