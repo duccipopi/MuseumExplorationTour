@@ -7,18 +7,26 @@
     <fragment
         android:id="@+id/departmentFragment"
         android:name="br.duccipopi.met.view.DepartmentFragment"
-        android:label="DepartmentFragment" >
+        android:label="DepartmentFragment">
         <action
             android:id="@+id/action_departmentFragment_to_galleryFragment"
-            app:destination="@id/galleryFragment" />
+            app:destination="@id/galleryFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/galleryFragment"
         android:name="br.duccipopi.met.view.GalleryFragment"
-        android:label="GalleryFragment" >
+        android:label="GalleryFragment">
         <action
             android:id="@+id/action_galleryFragment_to_artworkFragment"
-            app:destination="@id/artworkFragment" />
+            app:destination="@id/artworkFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
         <argument
             android:name="departmentId"
             app:argType="integer" />
@@ -26,9 +34,9 @@
     <fragment
         android:id="@+id/artworkFragment"
         android:name="br.duccipopi.met.view.ArtworkFragment"
-        android:label="ArtworkFragment" >
+        android:label="ArtworkFragment">
         <argument
             android:name="artwork"
-            app:argType="br.duccipopi.met.model.Artwork"/>
+            app:argType="br.duccipopi.met.model.Artwork" />
     </fragment>
 </navigation>

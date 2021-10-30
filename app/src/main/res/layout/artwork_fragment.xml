@@ -32,59 +32,65 @@
             <TextView
                 android:id="@+id/artwork_title"
                 style="@style/artwork_tile_title"
-                android:paddingTop="@dimen/canvas_inter_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/canvas_inter_padding"
                 app:noEmptyText="@{artwork.title}"
                 tools:text="Title" />
+
             <TextView
                 android:id="@+id/artwork_artist"
-                android:paddingTop="@dimen/canvas_inter_padding"
                 style="@style/artwork_tile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/canvas_inter_padding"
                 app:noEmptyText="@{artwork.artist}"
                 tools:text="Artist" />
+
             <TextView
                 android:id="@+id/artwork_type"
-                android:paddingTop="@dimen/canvas_inter_padding"
                 style="@style/artwork_tile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/canvas_inter_padding"
                 app:noEmptyText="@{artwork.type}"
                 tools:text="Type" />
+
             <TextView
                 android:id="@+id/artwork_date_period_country"
-                android:paddingTop="@dimen/canvas_inter_padding"
                 style="@style/artwork_tile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/canvas_inter_padding"
                 app:noEmptyText="@{String.join(`, `, artwork.date, artwork.period) + artwork.country}"
                 tools:text="Date, Period, Country" />
+
             <TextView
                 android:id="@+id/artwork_accession_year"
-                android:paddingTop="@dimen/canvas_inter_padding"
                 style="@style/artwork_tile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/canvas_inter_padding"
                 app:noEmptyText="@{@string/accessionYear(artwork.accessionYear)}"
                 tools:text="Accession Year" />
+
             <TextView
                 android:id="@+id/artwork_dimensions"
                 style="@style/artwork_tile"
-                android:paddingTop="@dimen/canvas_inter_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/canvas_inter_padding"
                 app:noEmptyText="@{artwork.dimensions}"
                 tools:text="Dimensions" />
+
             <TextView
                 android:id="@+id/artwork_link"
                 style="@style/artwork_tile"
-                android:paddingTop="@dimen/canvas_inter_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:noEmptyText="@{artwork.link}"
                 android:autoLink="web"
+                android:paddingTop="@dimen/canvas_inter_padding"
+                app:noEmptyText="@{artwork.link}"
                 tools:text="link" />
         </LinearLayout>
 

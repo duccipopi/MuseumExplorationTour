@@ -48,6 +48,8 @@ class GalleryFragment : Fragment() {
                         }
                     )
                 binding.galleryList.layoutManager = GridLayoutManager(requireContext(), 2)
+                binding.loadingIndicator.visibility = View.GONE
+                binding.loadingIndicator.isIndeterminate = false
             }
         })
 

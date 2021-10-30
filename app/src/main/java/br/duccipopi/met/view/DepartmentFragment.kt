@@ -39,6 +39,9 @@ class DepartmentFragment : Fragment() {
                         }
                     )
                 binding.departmentList.layoutManager = LinearLayoutManager(requireContext())
+
+                binding.loadingIndicator.visibility = View.GONE
+                binding.loadingIndicator.isIndeterminate = false
             }
         })
 

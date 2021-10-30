@@ -13,8 +13,6 @@ class GalleryViewModel(val app: Application, val repository: IRepository) : Andr
         get() = _loading
 
     private val _currentDepartment = MutableLiveData(-1)
-    val currentDepartment: LiveData<Int>
-        get() = _currentDepartment
 
     lateinit var artworks: LiveData<List<Artwork>>
 

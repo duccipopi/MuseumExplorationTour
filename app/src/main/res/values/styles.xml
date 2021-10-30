@@ -21,4 +21,9 @@
     <style name="artwork_tile_title" parent="artwork_tile">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="loading_bar">
+        <item name="android:scaleX">3</item>
+        <item name="android:scaleY">3</item>
+    </style>
 </resources>
