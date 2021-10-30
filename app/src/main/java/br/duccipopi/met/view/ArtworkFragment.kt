@@ -28,16 +28,16 @@ class ArtworkFragment : Fragment() {
 
         binding.artwork = args.artwork
 
-        binding.artworkImage.setOnClickListener {
-            binding.artworkInfo.visibility = View.VISIBLE
-            it.visibility = View.INVISIBLE
-
-        }
-
-        binding.artworkInfo.setOnClickListener {
-            binding.artworkImage.visibility = View.VISIBLE
-            it.visibility = View.INVISIBLE
-        }
+//        binding.artworkImage.setOnClickListener {
+//            binding.artworkInfo.visibility = View.VISIBLE
+//            it.visibility = View.INVISIBLE
+//
+//        }
+//
+//        binding.artworkInfo.setOnClickListener {
+//            binding.artworkImage.visibility = View.VISIBLE
+//            it.visibility = View.INVISIBLE
+//        }
 
 
         return binding.root
