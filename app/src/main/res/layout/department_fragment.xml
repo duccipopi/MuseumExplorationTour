@@ -29,5 +29,29 @@
             app:layout_constraintVertical_bias="0.4"
             android:indeterminate="true"
             style="@style/loading_bar" />
+
+        <ImageView
+            android:id="@+id/empty_indicator_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.4"
+            android:visibility="gone"
+            android:contentDescription="@string/no_department_found_description"
+            app:srcCompat="@drawable/no_departments_found" />
+        <TextView
+            android:id="@+id/empty_indicator_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/empty_indicator_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/closed_warning"
+            android:visibility="gone"
+            style="@style/warning_text" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -13,6 +13,9 @@ interface MetMuseumDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(department: Department)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllDepartments(departments: List<Department>)
+
     @Query("SELECT * from DEPARTMENT_TABLE WHERE id = :id")
     fun getDepartment(id: Int): LiveData<Department>
 
@@ -24,6 +27,9 @@ interface MetMuseumDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(artwork: Artwork)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllArtworks(artworks: List<Artwork>)
 
     @Query("SELECT * from ARTWORK_TABLE WHERE id = :id")
     fun getArtwork(id: Int): LiveData<Artwork>

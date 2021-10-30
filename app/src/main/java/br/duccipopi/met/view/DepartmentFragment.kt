@@ -42,6 +42,13 @@ class DepartmentFragment : Fragment() {
 
                 binding.loadingIndicator.visibility = View.GONE
                 binding.loadingIndicator.isIndeterminate = false
+
+                viewModel.departments.observe(viewLifecycleOwner, {
+                    val visibility =  if (it.isNullOrEmpty()) View.VISIBLE else View.GONE
+                    binding.emptyIndicatorImage.visibility = visibility
+                    binding.emptyIndicatorText.visibility = visibility
+                })
+
             }
         })
 

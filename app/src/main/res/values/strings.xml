@@ -2,4 +2,6 @@
     <string name="app_name">Museum Exploration Tour</string>
     <string name="unknown">Unknown</string>
     <string name="accessionYear">Accession Year: %s</string>
+    <string name="closed_warning">closed</string>
+    <string name="no_department_found_description">No department found</string>
 </resources>

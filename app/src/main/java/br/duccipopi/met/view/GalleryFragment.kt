@@ -50,7 +50,13 @@ class GalleryFragment : Fragment() {
                 binding.galleryList.layoutManager = GridLayoutManager(requireContext(), 2)
                 binding.loadingIndicator.visibility = View.GONE
                 binding.loadingIndicator.isIndeterminate = false
+
+                viewModel.artworks.observe(viewLifecycleOwner, {
+                    binding.emptyIndicator.visibility =
+                        if (it.isNullOrEmpty()) View.VISIBLE else View.GONE
+                })
             }
+
         })
 
         return binding.root
