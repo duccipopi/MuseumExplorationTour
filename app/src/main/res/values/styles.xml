@@ -22,6 +22,17 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="directions_tile">
+        <item name="android:fontFamily">@font/advent_pro</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="directions_tile_title" parent="directions_tile">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="loading_bar">
         <item name="android:scaleX">3</item>
         <item name="android:scaleY">3</item>

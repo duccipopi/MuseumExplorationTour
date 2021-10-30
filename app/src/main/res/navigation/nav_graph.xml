@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/departmentFragment">
 
@@ -39,4 +40,9 @@
             android:name="artwork"
             app:argType="br.duccipopi.met.model.Artwork" />
     </fragment>
+    <fragment
+        android:id="@+id/directionsFragment"
+        android:name="br.duccipopi.met.view.DirectionsFragment"
+        android:label="directions_fragment"
+        tools:layout="@layout/directions_fragment" />
 </navigation>

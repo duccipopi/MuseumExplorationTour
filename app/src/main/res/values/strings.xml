@@ -4,4 +4,11 @@
     <string name="accessionYear">Accession Year: %s</string>
     <string name="closed_warning">closed</string>
     <string name="no_department_found_description">No department found</string>
+    <string name="direction_menu_item">Get directions</string>
+    <string name="the_met_address_label">The MeT Address</string>
+    <string name="the_met_address">1000 Fifth Avenue\nat 82nd Street\nNew York, NY 10028</string>
+    <string name="my_distance_title">Distance</string>
+    <string name="my_distance_placeholder">"??? km / ??? mi"</string>
+    <string name="my_distance_pattern">"%.2f km / %.4f mi"</string>
+    <string name="map_of_the_met_content_description">Map of The MeT</string>
 </resources>
